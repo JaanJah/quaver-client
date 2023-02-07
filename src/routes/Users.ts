@@ -1,5 +1,6 @@
 import HttpClient from '../http/HttpClient';
 import { BASE_URL } from '../util/config';
+import { GetUsersInput, GetUsersResponse } from '../interfaces/Users';
 
 export default class Users {
 	private httpClient: HttpClient;
@@ -8,7 +9,12 @@ export default class Users {
 		this.httpClient = new HttpClient(BASE_URL);
 	}
 
-	public async getUsers() {}
+	public async getUsers(params: GetUsersInput): Promise<GetUsersResponse> {
+		return this.httpClient.request<GetUsersResponse, GetUsersInput>(
+			'/users',
+			params
+		);
+	}
 	public async getUserById(id: number) {}
 	public async searchUserByName(name: string) {}
 	public async getUserTopScores() {}
