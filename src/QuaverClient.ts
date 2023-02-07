@@ -9,7 +9,7 @@ import Scores from './routes/Scores';
 import Users from './routes/Users';
 import Web from './routes/Web';
 
-export default class QuaverClient extends HttpClient {
+export default class QuaverClient {
 	public leaderboard = new Leaderboard();
 	public maps = new Maps();
 	public mapsets = new Mapsets();
@@ -20,7 +20,7 @@ export default class QuaverClient extends HttpClient {
 	public users = new Users();
 	public web = new Web();
 
-	constructor() {
-		super();
-	}
+	public version = 'v1';
+
+	constructor() {}
 }
