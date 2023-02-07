@@ -1,4 +1,13 @@
+import HttpClient from '../http/HttpClient';
+import { BASE_URL } from '../util/config';
+
 export default class Users {
+	private httpClient: HttpClient;
+
+	constructor() {
+		this.httpClient = new HttpClient(BASE_URL);
+	}
+
 	public async getUsers() {}
 	public async getUserById(id: number) {}
 	public async searchUserByName(name: string) {}

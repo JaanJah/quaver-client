@@ -1,11 +1,14 @@
-import { BASE_URL } from '../util/config';
 import { fetch } from 'undici';
 
 export default class HttpClient {
-	constructor() {}
+	private readonly baseUrl: string;
+
+	constructor(baseUrl: string) {
+		this.baseUrl = baseUrl;
+	}
 
 	public async request<T>(path: string, args: any): Promise<T> {
-		const url = BASE_URL + path;
+		const url = this.baseUrl + path;
 
 		const response = await fetch(url);
 

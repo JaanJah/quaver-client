@@ -1,5 +1,5 @@
-import request from './http/request';
+import QuaverClient from './QuaverClient';
 
-request('/users/full/23', {}).then((res) => {
-	console.log('res', res);
-});
+const client = new QuaverClient();
+
+client.users.getUsers();
