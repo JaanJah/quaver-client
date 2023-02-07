@@ -1,6 +1,5 @@
-import sum from './util/sum';
+import request from './http/request';
 
-function main() {
-	console.log(sum(2, 3));
-}
-main();
+request('/users/full/23', {}).then((res) => {
+	console.log('res', res);
+});
