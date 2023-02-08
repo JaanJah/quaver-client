@@ -6,10 +6,10 @@ export interface GetUsersInput {
 
 export interface GetUsersResponse {
 	status: HttpStatus;
-	users: User[];
+	users: ShortUser[];
 }
 
-interface User {
+interface ShortUser {
 	id: number;
 	steam_id: string;
 	username: string;

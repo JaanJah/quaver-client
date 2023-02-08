@@ -9,12 +9,15 @@ export default class Users {
 		this.httpClient = new HttpClient(BASE_URL);
 	}
 
+	// https://wiki.quavergame.com/docs/api/users#get-%2Fusers
 	public async getUsers(params: GetUsersInput): Promise<GetUsersResponse> {
 		return this.httpClient.request<GetUsersResponse, GetUsersInput>(
 			'/users',
 			params
 		);
 	}
+
+	// https://wiki.quavergame.com/docs/api/users#get-%2Fusers%2Ffull%2F%3Aid
 	public async getUserById(id: number) {}
 	public async searchUserByName(name: string) {}
 	public async getUserTopScores() {}
