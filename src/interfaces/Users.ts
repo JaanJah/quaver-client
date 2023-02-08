@@ -14,8 +14,13 @@ export interface GetFullUserResponse {
 	user: FullUser;
 }
 
+export interface SearchUserByNameResponse {
+	status: HttpStatus;
+	users: MiniUser[];
+}
+
 interface FullUser {
-	info: UserInfo;
+	info: User;
 	profile_badges: ProfileBadge[];
 	activity_feed: ActivityFeed[];
 	clan: null;
@@ -72,7 +77,24 @@ interface KeyStats {
 	count_grade_d: number;
 }
 
-interface ShortUser {
+type ShortUser = Pick<
+	User,
+	| 'id'
+	| 'steam_id'
+	| 'username'
+	| 'country'
+	| 'time_registered'
+	| 'allowed'
+	| 'privileges'
+	| 'usergroups'
+	| 'mute_endtime'
+	| 'latest_activity'
+	| 'avatar_url'
+>;
+
+type MiniUser = Pick<ShortUser, 'id' | 'username' | 'steam_id' | 'avatar_url'>;
+
+interface User {
 	id: number;
 	steam_id: string;
 	username: string;
@@ -84,9 +106,6 @@ interface ShortUser {
 	mute_endtime: string;
 	latest_activity: string;
 	avatar_url: string;
-}
-
-interface UserInfo extends ShortUser {
 	userpage: string;
 	information: UserInformation;
 	userpage_disabled: number;

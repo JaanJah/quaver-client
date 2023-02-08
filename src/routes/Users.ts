@@ -4,6 +4,7 @@ import {
 	GetFullUserResponse,
 	GetUsersInput,
 	GetUsersResponse,
+	SearchUserByNameResponse,
 } from '../interfaces/Users';
 
 export default class Users {
@@ -27,7 +28,15 @@ export default class Users {
 			`/users/full/${id}`
 		);
 	}
-	public async searchUserByName(name: string) {}
+
+	// https://wiki.quavergame.com/docs/api/users#get-%2Fusers%2Fsearch%2F%3Aname
+	public async searchUserByName(
+		name: string
+	): Promise<SearchUserByNameResponse> {
+		return this.httpClient.request<SearchUserByNameResponse>(
+			`/users/search/${name}`
+		);
+	}
 	public async getUserTopScores() {}
 	public async getUserRecentScores() {}
 	public async getUserFirstPlaces() {}
