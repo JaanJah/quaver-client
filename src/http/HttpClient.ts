@@ -7,7 +7,7 @@ export default class HttpClient {
 		this.baseUrl = baseUrl;
 	}
 
-	public async request<T, V>(path: string, params: V): Promise<T> {
+	public async request<T, V = {}>(path: string, params?: V): Promise<T> {
 		let url = this.baseUrl + path;
 
 		if (params) {

@@ -1,6 +1,10 @@
 import HttpClient from '../http/HttpClient';
 import { BASE_URL } from '../util/config';
-import { GetUsersInput, GetUsersResponse } from '../interfaces/Users';
+import {
+	GetFullUserResponse,
+	GetUsersInput,
+	GetUsersResponse,
+} from '../interfaces/Users';
 
 export default class Users {
 	private httpClient: HttpClient;
@@ -18,7 +22,11 @@ export default class Users {
 	}
 
 	// https://wiki.quavergame.com/docs/api/users#get-%2Fusers%2Ffull%2F%3Aid
-	public async getUserById(id: number) {}
+	public async getUserById(id: number): Promise<GetFullUserResponse> {
+		return this.httpClient.request<GetFullUserResponse>(
+			`/users/full/${id}`
+		);
+	}
 	public async searchUserByName(name: string) {}
 	public async getUserTopScores() {}
 	public async getUserRecentScores() {}
